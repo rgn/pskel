@@ -51,25 +51,38 @@ Get-ChildItem -Path ..\ -Filter *.* -Recurse -File | % {
 
     if ($_.Name -eq "init_project.ps1") { continue }
     
+    Write-Host "Initialize " $_.Name  -ForegroundColor Gray
+
     $fileContent = $text = Get-Content $_.FullName -Raw
-    
-    if ($fileContent.Length > 0)
-    {
-        $variables | % {
-            $fileContent = $fileContent.Replace($_.Name, $_.Value)
+
+    if ($fileContent.Length -gt 0) {
+        Write-Debug "Replace variables in $($_.Name)"
+
+        $variables.Keys | % {
+            
+            $key = $_
+            $value = $variables.Item($_)
+
+            Write-Debug "replace $key  with $value"
+
+            $fileContent = $fileContent.Replace($key, $value)
         }
     }
+    else {
+        Write-Debug "skipt $($_.Name) due to zero length"
+    }
 
-    Set-Content $_.FullName
+    Set-Content $_.FullName $fileContent
 
     # Rename PSKel* files to $ProjectName*
     If ($_.Name.StartsWith("PSkel"))
     {
         $newName = $_.Name.Replace("PSkel", $ProjectName)
         
-        Write-Host "$($_.Name) --> $newName"
+        Write-Debug "Rename $($_.Name) to $newName"
+
         Rename-Item -Path $_.FullName -NewName $newName        
     }
 }
 
-Write-Host "Project initialized."
+Write-Host "Project initialized." -ForegroundColor Green

@@ -1,0 +1,23 @@
+TOPIC
+    about_PSkel
+
+SHORT DESCRIPTION
+    PSkel is a module to simplify deployments
+
+LONG DESCRIPTION
+    PSkel is a module to simplify deployments, targeted at
+    continuous integration and delivery scenarios.
+
+DETAILED DESCRIPTION
+    PSkel is a skeleton module.
+
+    Terminology and concepts
+    ========================
+    There are three primary concepts:
+
+    Conventions
+    ===========
+
+SEE ALSO
+    about_PSkel_Definitions
+    https://github.com/rgn/pskel

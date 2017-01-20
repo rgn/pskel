@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>%ProjectGuid%</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>%ProjectName%</RootNamespace>
+    <AssemblyName>%ProjectAssemblyName%</AssemblyName>
+    <Name>%ProjectName%</Name>
+    <Author>%ProjectAuthor%</Author>
+    <CompanyName>%ProjectCompany%</CompanyName>
+    <Copyright>Copyright 2016. All rights reserved.</Copyright>
+    <Description />
+    <Guid>%ProjectGuid%</Guid>
+    <ClrVersion />
+    <PowerShellHostVersion />
+    <PowerShellVersion />
+    <ProcessorArchitecture />
+    <RequiredModules />
+    <ProjectHome />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="en-US\" />
+    <Folder Include="lib\" />
+    <Folder Include="private\" />
+    <Folder Include="public\" />
+    <Folder Include="tools\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="en-US\about_PSkel.help.txt" />
+    <Compile Include="private\Write-Log.ps1" />
+    <Compile Include="PSkel.psd1" />
+    <Compile Include="PSkel.psm1" />
+    <Compile Include="PSkel.tests.ps1" />
+    <Compile Include="public\Get-Example.ps1" />
+    <Compile Include="tools\install.ps1" />
+    <Compile Include="tools\prepare.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PSkel.Format.ps1xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Target Name="Build" />
+</Project>
